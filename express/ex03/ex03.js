@@ -1,15 +1,15 @@
 const express = require('express')
 const server = express()
 
-
-server.get('/', function (req, res, next) {
+//qualquer caminho ao usar /api execute esse middleware
+server.use('/api', function (req, res, next) {
     console.log('Start...');
     next()
     console.log('End...');
 })
 
-server.get('/', function (req, res) {
+server.use('/api', function (req, res) {
     console.log('Resposta...');
-    res.send('<h1>Olá Express</h1>');
+    res.send('<h1>API</h1>');
 })
 server.listen(3000, () => console.log('Executando...'))
